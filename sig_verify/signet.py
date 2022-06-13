@@ -1,28 +1,14 @@
-import cv2
-import keras
+IMPORT cv2
+iIMPORT keras
 from keras.models import model_from_json
-import numpy as np
-from scipy import ndimage
+IMPORT numpy as np
+
 #from scipy.misc import imresize
 def signet_classifier(input1, input2):
     """
     input1 : image from form
     input2 : image from server
-    """
-
-    img1 = cv2.imread(input1,0)
-    _, img1 = cv2.threshold(img1,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-    img1 = cv2.bitwise_not(img1)
-    img1 = ndimage.gaussian_filter(img1, 1)
-    mean, std = cv2.meanStdDev(img1)
-    if std < 0.001:
-        img1 = (img1-mean)(0.001)
-    else:
-        img1 = (img1-mean)/std
-    #img1 = cv2.bitwise_not(img1)
-    img1 = cv2.resize(img1, (224, 224))
-    img1 = img1.reshape((224, 224, 1))
-    img1 = img1.astype(np.float32)
+#
 
 
 
